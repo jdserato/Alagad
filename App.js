@@ -1,17 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native';
 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState('');
+  const [goals, setGoals] = useState([]);
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText(enteredText);
+  };
+  function addGoalHandler() {
+    setGoals(currentGoals => [...goals, {text: enteredGoalText, id: Math.random().toString()}]);
+    setEnteredGoalText('');
+  };
+
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={{margin:50, borderWidth:2, borderColor:'red', padding:16}}>Whttaops</Text>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput placeholder='Enter goal' value={enteredGoalText} style={styles.textInput} onChangeText={goalInputHandler}/>
+        <Button title='Add Goal' onPress={addGoalHandler}/>
       </View>
-      
-      <Text>Team ALAGAD</Text>
-      <StatusBar style="auto" />
-      <View style={styles.bot}>
-        <Button title='Tap Me'/>
+      <View style={styles.goalsContainer}>
+        <Text>List of Goals</Text>
+        <FlatList keyExtractor={(item, index) => {
+          return item.id;
+        }} data={goals} renderItem={itemData => {
+          return (
+            <View style={styles.goalItem}>
+              <Text style={styles.goalText}>{itemData.item.text}</Text>
+            </View>
+          )
+        }}>
+        </FlatList>
       </View>
     </View>
      
@@ -19,16 +38,39 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
+    paddingTop: 50,
+    paddingHorizontal: 16,
+    flex: 1
+  },
+  inputContainer: {
     flex: 1,
-    backgroundColor: '#cf7c20',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc'
   },
-  bot: {
-    flex: 1,
-    backgroundColor: '#5f7420',
-    alignSelf: 'baseline',
-    alignContent:'space-evenly'
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#cccccc',
+    width:'70%',
+    marginRight: 8,
+    padding: 8
   },
+  goalsContainer: {
+    flex: 5, 
+  },
+  goalItem: {
+    borderWidth: 1,
+    padding: 8,
+    margin: 4,
+    borderRadius: 7,
+    borderColor: '#c2c2c2',
+    backgroundColor: 'red',
+  },
+  goalText: {
+    fontSize: 14,
+  }, 
 });
