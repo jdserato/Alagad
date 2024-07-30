@@ -1,39 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native';
-
+import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState('');
   const [goals, setGoals] = useState([]);
-  function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
-  };
-  function addGoalHandler() {
+  
+  function addGoalHandler(enteredGoalText) {
     setGoals(currentGoals => [...goals, {text: enteredGoalText, id: Math.random().toString()}]);
-    setEnteredGoalText('');
   };
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput placeholder='Enter goal' value={enteredGoalText} style={styles.textInput} onChangeText={goalInputHandler}/>
-        <Button title='Add Goal' onPress={addGoalHandler}/>
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <Text>List of Goals</Text>
-        <FlatList keyExtractor={(item, index) => {
-          return item.id;
-        }} data={goals} renderItem={itemData => {
-          return (
-            <View style={styles.goalItem}>
-              <Text style={styles.goalText}>{itemData.item.text}</Text>
-            </View>
-          )
+        <FlatList keyExtractor={(item, index) => { return item.id; }} data={goals} renderItem={itemData => {
+          return <GoalItem text={ itemData.item.text} />;
         }}>
         </FlatList>
       </View>
     </View>
-     
   );
 }
 
@@ -62,15 +49,5 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5, 
   },
-  goalItem: {
-    borderWidth: 1,
-    padding: 8,
-    margin: 4,
-    borderRadius: 7,
-    borderColor: '#c2c2c2',
-    backgroundColor: 'red',
-  },
-  goalText: {
-    fontSize: 14,
-  }, 
+  
 });
