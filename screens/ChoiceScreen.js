@@ -5,7 +5,7 @@ import LogoButton from "../components/LogoButton";
 
 function ChoiceScreen( {route, navigation} ) {
   function customerRegHandler() {
-    navigation.navigate("RegisterCustomerScreen");
+    navigation.navigate("RegisterScreen");
   }
   return (
     <View style={styles.rootContainer}>

@@ -6,10 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 import BlackButton from '../components/BlackButton';
 
 
-function HomeScreen() {
-  const navigation = useNavigation();
+function HomeScreen( {route, navigation }) {
   function registerHandler() {
     navigation.navigate("ChoiceScreen");
+  }
+  function loginHandler() {
+    navigation.navigate("LoginScreen");
   }
   
   return (
@@ -24,7 +26,7 @@ function HomeScreen() {
       </LinearGradient>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <WhiteButton>LOG IN</WhiteButton>
+          <WhiteButton onClick={loginHandler}>LOG IN</WhiteButton>
         </View>
         <View style={styles.buttonContainer}>
           <BlackButton onClick={registerHandler}>REGISTER</BlackButton>

@@ -9,11 +9,15 @@ import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChoiceScreen from './screens/ChoiceScreen';
-import RegisterCustomerScreen from './screens/RegisterCustomerScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import LoginScreen from './screens/LoginScreen';
+import CustomerMainScreen from './screens/CustomerMainScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -56,8 +60,15 @@ export default function App() {
           <Stack.Screen name="ChoiceScreen" component={ChoiceScreen} options={{
             title: ""
           }}/>
-          <Stack.Screen name="RegisterCustomerScreen" component={RegisterCustomerScreen} options={{
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{
             title: "Register"
+          }}/>
+          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
+            title: "Log In"
+          }}/>
+          <Stack.Screen name="CustomerMainScreen" component={CustomerMainScreen} options={{
+            title: "Welcome",
+            headerShown: false
           }}/>
         </Stack.Navigator>
       </NavigationContainer>

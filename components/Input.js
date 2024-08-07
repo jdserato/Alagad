@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     flex: 7,
     fontSize: 18,
-    fontFamily: 'urbanist-med'
+    fontFamily: 'urbanist-med',
+    borderWidth: 2
   }
 })

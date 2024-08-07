@@ -3,7 +3,7 @@ import Input from "../components/Input";
 import { useRef } from "react";
 import BlackButton from "../components/BlackButton";
 
-function RegisterCustomerScreen() {
+function RegisterScreen() {
   const ref_input2 = useRef();
   const ref_input3 = useRef();
   const ref_input4 = useRef();
@@ -19,15 +19,15 @@ function RegisterCustomerScreen() {
       <Input label={"Last Name"} nextInp={ref_input3} textInputConfig={{
         ref: ref_input2,
       }}/>
-      <Input label={"Email Address"} nextInp={ref_input3} textInputConfig={{
+      <Input label={"Email Address"} nextInp={ref_input4} textInputConfig={{
         ref: ref_input3,
         keyboardType: 'email',
       }}/>
-      <Input label={"Password"} nextInp={ref_input4} textInputConfig={{
+      <Input label={"Password"} nextInp={ref_input5} textInputConfig={{
         secureTextEntry: true,
         ref: ref_input4,
       }}/>
-      <Input label={"Confirm Password"} nextInp={ref_input5} textInputConfig={{
+      <Input label={"Confirm Password"} nextInp={ref_input6} textInputConfig={{
         secureTextEntry: true,
         ref: ref_input5,
       }}/>
@@ -42,7 +42,7 @@ function RegisterCustomerScreen() {
   )
 }
 
-export default RegisterCustomerScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
