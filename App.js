@@ -1,56 +1,76 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
-import GoalItem from './components/GoalItem';
-import GoalInput from './components/GoalInput';
+import { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, Text, View, FlatList, Button, ImageBackground, SafeAreaView } from 'react-native';
+import { COLORS } from './constants/styles';
+import HomeScreen from './screens/HomeScreen';
+import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ChoiceScreen from './screens/ChoiceScreen';
+import RegisterCustomerScreen from './screens/RegisterCustomerScreen';
+
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
+const Stack = createNativeStackNavigator();
+
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [goals, setGoals] = useState([]);
+  const [appIsReady, setAppIsReady] = useState(false);
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await Font.loadAsync({
+          'urbanist': require('./assets/fonts/Urbanist_900Black.ttf'),
+          'urbanist-med': require('./assets/fonts/Urbanist_500Medium.ttf'),
+        })
+      } catch (e) {
+        console.warn(e);
+      } finally {
+          setAppIsReady(true);
+      }
+    }
 
-  function startAddGoalHandler() {
-    setModalVisible(true);
-  }
+    prepare();
+  }, []);
 
-  function endAddGoalHandler() {
-    setModalVisible(false);
-  }
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
 
-  function addGoalHandler(enteredGoalText) {
-    setGoals(currentGoals => [...goals, { text: enteredGoalText, id: Math.random().toString() }]);
-  };
-
-  function deleteGoalHandler(id) {
-    setGoals((currentGoals) => {
-      return currentGoals.filter((goal) => goal.id !== id);
-    })
+  if (!appIsReady) {
+    return null;
   }
 
   return (
     <>
-    <StatusBar style='light'/>
-    <View style={styles.appContainer}>
-      <Button title='Add New Goal' color={'orange'} onPress={startAddGoalHandler}/>
-      {modalVisible && <GoalInput onAddGoal={addGoalHandler} visible={modalVisible} onEndGoal={endAddGoalHandler}/>}
-      <View style={styles.goalsContainer}>
-        <Text>List of Goals</Text>
-        <FlatList keyExtractor={(item, index) => item.id} data={goals} renderItem={itemData => {
-          return <GoalItem text={itemData.item.text} id={itemData.item.id} onDeleteItem={deleteGoalHandler} />;
-        }}>
-        </FlatList>
-      </View>
-    </View>
+    <StatusBar style='auto'/>
+    <SafeAreaView style={styles.rootScreen} onLayout={onLayoutRootView}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
+            headerShown: false,
+          }}/>
+          <Stack.Screen name="ChoiceScreen" component={ChoiceScreen} options={{
+            title: ""
+          }}/>
+          <Stack.Screen name="RegisterCustomerScreen" component={RegisterCustomerScreen} options={{
+            title: "Register"
+          }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  appContainer: {
-    paddingTop: 50,
-    paddingHorizontal: 16,
+  rootScreen: {
     flex: 1,
   },
-  goalsContainer: {
-    flex: 5,
-  },
-
+  bgImage: {
+    opacity: 0.35,
+  }
 });

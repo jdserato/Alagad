@@ -4,25 +4,28 @@
     "slug": "my_app2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon":  "./assets/logo/AlagadGradientLogo.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#1e085a",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/alagad-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "width": "5"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo/AlagadBlackLogo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/logo/AlagadGradientLogo.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
