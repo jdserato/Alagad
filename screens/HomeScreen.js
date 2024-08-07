@@ -14,7 +14,7 @@ function HomeScreen() {
   
   return (
     <View style={styles.rootScreen}>
-      <LinearGradient colors={[Colors.secondary500, Colors.accent200]} style={styles.rootContainer}>
+      <LinearGradient colors={[Colors.accent200, Colors.secondary300]} style={styles.rootContainer}>
         <ImageBackground source={require('../assets/images/lander.jpg')}
         resizeMethod='cover' style={styles.backImg} imageStyle={styles.bgImage}>
           <View style={styles.imageContainer}>
