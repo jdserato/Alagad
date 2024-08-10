@@ -1,3 +1,5 @@
+import Worker from "../models/worker";
+
 export const WORKERS = [
   new Worker(
     'w1',

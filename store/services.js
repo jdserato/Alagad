@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Service from "../models/service";
 
 export const SERVICES = [
   new Service(
@@ -47,10 +48,3 @@ export const SERVICES = [
     "storefront"
   ),
 ]
-
-const servicesSlice = createSlice({
-  'services':
-  {
-    id: '',
-  }
-});
