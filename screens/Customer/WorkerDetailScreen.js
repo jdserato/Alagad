@@ -6,7 +6,7 @@ import WhiteButton from "../../components/WhiteButton";
 import RatingsList from "../../components/ReviewsList";
 import { REVIEWS } from "../../store/reviews";
 
-function WorkerDetailScreen( {route} ) {
+function WorkerDetailScreen( {route, navigation} ) {
   const id = route.params.id;
   const worker = WORKERS.find((worker) => {
     return worker.id === id;
@@ -16,7 +16,10 @@ function WorkerDetailScreen( {route} ) {
   })
   const my_reviews = REVIEWS.filter((review) => {
     return review.to === user.id;
-  });
+  })
+  function bookNowHandler() {
+    navigation.navigate("BookingScreen", {worker: worker});
+  }
   return (
     <View style={styles.rootContainer}>
       <Image source={{ uri: user.image }} style={styles.image} />
@@ -24,7 +27,7 @@ function WorkerDetailScreen( {route} ) {
       <Text>{user.location}</Text>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <BlackButton>BOOK NOW</BlackButton>
+          <BlackButton onClick={bookNowHandler}>BOOK NOW</BlackButton>
         </View>
         <View style={styles.buttonContainer}>
           <WhiteButton>MESSAGE</WhiteButton>

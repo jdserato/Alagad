@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: Colors.secondary300,
     padding: 8,
-    borderRadius: 8,
+    borderRadius: 12,
     marginVertical: 4,
   },
   nameContainer: {

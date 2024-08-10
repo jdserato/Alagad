@@ -8,6 +8,7 @@ import SettingsScreen from '../SettingScreen';
 import SpecificServicersScreen from './SpecificServicersScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import WorkerDetailScreen from './WorkerDetailScreen';
+import BookingScreen from './BookingScreen';
 
 const Drawer = createDrawerNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -38,6 +39,7 @@ function BookServiceNav() {
       <Stack.Screen name='CustomerLanding' component={CustomerLanding}/>
       <Stack.Screen name='SpecificServicersScreen' component={SpecificServicersScreen}/>
       <Stack.Screen name='WorkerDetailScreen' component={WorkerDetailScreen}/>
+      <Stack.Screen name='BookingScreen' component={BookingScreen}/>
     </Stack.Navigator>
   )
 }
