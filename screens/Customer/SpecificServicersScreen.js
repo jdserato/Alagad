@@ -1,13 +1,17 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { SERVICES } from "../store/services";
-import { WORKERS } from "../store/serviceworkers";
-import WorkerView from "../components/WorkerView";
+import { SERVICES } from "../../store/services";
+import { WORKERS } from "../../store/serviceworkers";
+import WorkerView from "../../components/WorkerView";
 
-function renderWorker(itemData) {
-  return <WorkerView workerId={itemData.item.id}/>
-}
 
-function SpecificServicersScreen( {route} ) {
+function SpecificServicersScreen( {route, navigation} ) {
+  function renderWorker(itemData) {
+    function workerDetail() {
+      navigation.navigate('WorkerDetailScreen', {id: itemData.item.id})
+    }
+    return <WorkerView workerId={itemData.item.id} onClick={workerDetail}/>
+  }
+
   const servId = route.params.servId;
   const service = SERVICES.find((serviceItem) => {
     return serviceItem.id === servId;

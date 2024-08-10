@@ -11,7 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChoiceScreen from './screens/ChoiceScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
-import CustomerMainScreen from './screens/CustomerMainScreen';
+import CustomerMainScreen from './screens/Customer/CustomerMainScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // Keep the splash screen visible while we fetch resources

@@ -1,12 +1,13 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CustomerLanding from './CustomerLanding';
+import CustomerLanding from './Landing';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ChatsScreen from './ChatsScreen';
+import ChatsScreen from '../ChatsScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from "@expo/vector-icons";
-import SettingsScreen from './SettingScreen';
+import SettingsScreen from '../SettingScreen';
 import SpecificServicersScreen from './SpecificServicersScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import WorkerDetailScreen from './WorkerDetailScreen';
 
 const Drawer = createDrawerNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -36,6 +37,7 @@ function BookServiceNav() {
     }}>
       <Stack.Screen name='CustomerLanding' component={CustomerLanding}/>
       <Stack.Screen name='SpecificServicersScreen' component={SpecificServicersScreen}/>
+      <Stack.Screen name='WorkerDetailScreen' component={WorkerDetailScreen}/>
     </Stack.Navigator>
   )
 }
