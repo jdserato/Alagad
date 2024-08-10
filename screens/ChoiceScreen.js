@@ -11,8 +11,8 @@ function ChoiceScreen( {route, navigation} ) {
     <View style={styles.rootContainer}>
       <Text>Enter the system as a...</Text>
       <View style={styles.buttonsContainer}>
-      <LogoButton logo="person" text="CUSTOMER" onClick={customerRegHandler}/>
-      <LogoButton logo="hammer" text="SERVICE PROVIDER"/>
+      <LogoButton logo="person" text="CUSTOMER" onClick={customerRegHandler} logoSize={80}/>
+      <LogoButton logo="hammer" text="SERVICE PROVIDER" logoSize={80}/>
       </View>
     </View>
   );

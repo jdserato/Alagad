@@ -1,8 +1,9 @@
 import { Text } from "react-native";
+import AllServicesList from "../components/AllServicesList";
 
 function CustomerLanding() {
   return (
-    <Text>Hello Customer!</Text>
+    <AllServicesList />
   );
 }
 

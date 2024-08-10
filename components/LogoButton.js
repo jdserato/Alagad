@@ -2,12 +2,12 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 import { Colors } from "../constants/styles";
 
-function LogoButton({ logo, text, onClick }) {
+function LogoButton({ logo, text, onClick, logoSize }) {
   return <View style={styles.btnOuterContainer}>
-  <Pressable style={({pressed}) => pressed ? [styles.pressed, styles.btnInnerContainer] :styles.btnInnerContainer } onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
+  <Pressable style={({pressed}) => pressed ? [styles.pressed, styles.btnInnerContainer,{height:logoSize*2, width: logoSize*2}] :[styles.btnInnerContainer,{height:logoSize*2, width: logoSize*2}]  } onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
     <View style={styles.logoArea}>
 
-    <Ionicons name={logo} size={80} color={"white"}/>
+    <Ionicons name={logo} size={logoSize} color={"white"}/>
     </View>
     <View style={styles.textArea}>
 
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
       alignItems: 'center',
       justifyContent: 'center',
-      height: 150,
-      width: 150,
+      // height: logoSize*2,
+      // width: logoSize*2,
       elevation: 2,
       borderRadius: 18,
   },
