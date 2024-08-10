@@ -14,6 +14,7 @@ function WorkerDetailScreen( {route} ) {
     <View style={styles.rootContainer}>
       <Image source={{uri: user.image}} style={styles.image}/>
       <Text style={styles.text}>{user.first_name} {user.last_name}</Text>
+      <Text>{user.location}</Text>
     </View>
   );
 }
