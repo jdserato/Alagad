@@ -23,8 +23,8 @@ export default WorkerDetailScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: 200,
+    height: 210,
+    width: 210,
     borderRadius: 100,
   },
   rootContainer: {
