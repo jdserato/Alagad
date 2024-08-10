@@ -8,7 +8,7 @@ export const USERS = [
     'jdserato@gmail.com',
     [1],
     'password',
-    '',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Abdelrahman_ElGendy%E2%80%94Headshot.jpg/640px-Abdelrahman_ElGendy%E2%80%94Headshot.jpg',
     'Poblacion, Liloan, Cebu'
   ),
   new User(
@@ -18,7 +18,7 @@ export const USERS = [
     'j.arivelez@gmail.com',
     [1],
     'password',
-    '',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Dr_Prash_Ladva.jpg/640px-Dr_Prash_Ladva.jpg',
     'Labangon, Cebu City'
   ),
   new User(
@@ -58,7 +58,7 @@ export const USERS = [
     'jj.delacruz@gmail.com',
     [1],
     'password',
-    './assets/images/goal.png',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Johnsson%2C_WG_editor.jpg/640px-Johnsson%2C_WG_editor.jpg',
     'Tisa, Cebu City'
   ),
 ]

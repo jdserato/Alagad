@@ -15,12 +15,12 @@ function WorkerView({workerId, onClick}) {
     <View style={styles.btnOuterContainer}>
       <Pressable style={({ pressed }) => pressed ? [styles.pressed, styles.btnInnerContainer] : styles.btnInnerContainer} onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
         <View style={styles.mainContainer}>
-          <Image style={styles.profileImage} source={{uri: user.image }}></Image>
-        <View style={styles.textArea}>
-        <Text style={styles.buttonText}>{user.first_name} {user.last_name}</Text>
-        <Text style={styles.buttonText}>{worker.rate}</Text>
-        <Text style={styles.buttonText}>{user.location}</Text>
-        </View>
+          <Image style={styles.profileImage} source={{ uri: user.image }}></Image>
+          <View style={styles.textArea}>
+            <Text style={styles.buttonText}>{user.first_name} {user.last_name}</Text>
+            <Text style={styles.buttonText}>{worker.rate}</Text>
+            <Text style={styles.buttonText}>{user.location}</Text>
+          </View>
         </View>
       </Pressable>
     </View>
