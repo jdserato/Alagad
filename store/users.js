@@ -2,14 +2,14 @@ import User from "../models/user";
 
 export const USERS = [
   new User(
-    '001',
-    'Joshua',
-    'Arivelez',
-    'j.arivelez@gmail.com',
+    '000',
+    'Jay Vince',
+    'Serato',
+    'jdserato@gmail.com',
     [1],
     'password',
     '',
-    'Tisa, Cebu City'
+    'Poblacion, Liloan, Cebu'
   ),
   new User(
     '001',
