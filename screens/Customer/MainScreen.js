@@ -1,5 +1,4 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CustomerLanding from './Landing';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ChatsScreen from '../ChatsScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,6 +8,7 @@ import SpecificServicersScreen from './SpecificServicersScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import WorkerDetailScreen from './WorkerDetailScreen';
 import BookingScreen from './BookingScreen';
+import LandingScreen from './LandingScreen';
 
 const Drawer = createDrawerNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -36,7 +36,7 @@ function BookServiceNav() {
     <Stack.Navigator screenOptions={{
       headerShown: false
     }}>
-      <Stack.Screen name='CustomerLanding' component={CustomerLanding}/>
+      <Stack.Screen name='CustomerLanding' component={LandingScreen}/>
       <Stack.Screen name='SpecificServicersScreen' component={SpecificServicersScreen}/>
       <Stack.Screen name='WorkerDetailScreen' component={WorkerDetailScreen}/>
       <Stack.Screen name='BookingScreen' component={BookingScreen}/>
@@ -49,8 +49,7 @@ function BottomTabsNav() {
     <BottomTabs.Navigator screenOptions={{
       headerShown: false
     }}>
-      <BottomTabs.Screen name='Customer' component={BookServiceNav} options={({route}) => ({
-        headerTitle: getHeaderTitle(route),
+      <BottomTabs.Screen name='Customer' component={LandingScreen} options={({route}) => ({
         title: "Home",
         headerShown: false,
         tabBarIcon: ({color, size}) => (
@@ -70,9 +69,9 @@ function BottomTabsNav() {
 function CustomerMainScreen() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Main" component={BottomTabsNav} options={({route}) => ({
-        headerTitle: getHeaderTitle(route),
-      })}/>
+      <Drawer.Screen name="Main" component={BottomTabsNav} options={{
+        headerTitle: 'Book Service'
+      }}/>
       <Drawer.Screen name="Settings" component={SettingsScreen} />
     </Drawer.Navigator>
   )

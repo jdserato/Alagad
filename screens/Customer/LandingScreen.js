@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import AllServicesList from "../../components/AllServicesList";
 
-function CustomerLanding() {
+function LandingScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -12,7 +12,7 @@ function CustomerLanding() {
   );
 }
 
-export default CustomerLanding;
+export default LandingScreen;
 
 const styles = StyleSheet.create({
   container: {

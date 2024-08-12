@@ -5,20 +5,21 @@ import WorkerView from "../../components/WorkerView";
 
 
 function SpecificServicersScreen( {route, navigation} ) {
-  function renderWorker(itemData) {
-    function workerDetail() {
-      navigation.navigate('WorkerDetailScreen', {id: itemData.item.id})
-    }
-    return <WorkerView workerId={itemData.item.id} onClick={workerDetail}/>
-  }
-
+  
   const servId = route.params.servId;
   const service = SERVICES.find((serviceItem) => {
     return serviceItem.id === servId;
   })
+  navigation.setOptions({title: service.name});
   const workersList = WORKERS.filter((workerItem) => {
     return workerItem.serviceId === servId;
   })
+  function renderWorker(itemData) {
+    function workerDetail() {
+      navigation.navigate('WorkerDetailScreen', {id: itemData.item.id, title: service.name});
+    }
+    return <WorkerView workerId={itemData.item.id} onClick={workerDetail}/>
+  }
 
   return (
     <View style={styles.container}>

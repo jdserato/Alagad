@@ -11,8 +11,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChoiceScreen from './screens/ChoiceScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
-import CustomerMainScreen from './screens/Customer/CustomerMainScreen';
+import MainScreen from './screens/Customer/MainScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import LandingScreen from './screens/Customer/LandingScreen';
+import SpecificServicersScreen from './screens/Customer/SpecificServicersScreen';
+import WorkerDetailScreen from './screens/Customer/WorkerDetailScreen';
+import BookingScreen from './screens/Customer/BookingScreen';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -66,10 +70,16 @@ export default function App() {
           <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
             title: "Log In"
           }}/>
-          <Stack.Screen name="CustomerMainScreen" component={CustomerMainScreen} options={{
+          <Stack.Screen name="CustomerMainScreen" component={MainScreen} options={{
             title: "Welcome",
             headerShown: false
           }}/>
+          <Stack.Screen name='CustomerLanding' component={LandingScreen} options={{
+            headerShown: false,
+          }}/>
+          <Stack.Screen name='SpecificServicersScreen' component={SpecificServicersScreen}/>
+          <Stack.Screen name='WorkerDetailScreen' component={WorkerDetailScreen}/>
+          <Stack.Screen name='BookingScreen' component={BookingScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

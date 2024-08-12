@@ -8,6 +8,7 @@ import { REVIEWS } from "../../store/reviews";
 
 function WorkerDetailScreen( {route, navigation} ) {
   const id = route.params.id;
+  navigation.setOptions({title: route.params.title});
   const worker = WORKERS.find((worker) => {
     return worker.id === id;
   })
