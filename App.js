@@ -12,6 +12,7 @@ import ChoiceScreen from './screens/ChoiceScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import CustomerMainScreen from './screens/Customer/CustomerMainScreen';
+import WorkerMainScreen from './screens/Worker/WorkerMainScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // Keep the splash screen visible while we fetch resources
@@ -67,6 +68,10 @@ export default function App() {
             title: "Log In"
           }}/>
           <Stack.Screen name="CustomerMainScreen" component={CustomerMainScreen} options={{
+            title: "Welcome",
+            headerShown: false
+          }}/>
+          <Stack.Screen name="WorkerMainScreen" component={WorkerMainScreen} options={{
             title: "Welcome",
             headerShown: false
           }}/>
