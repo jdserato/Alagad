@@ -6,9 +6,9 @@ export const USERS = [
     '000',
     'Jay Vince',
     'Serato',
-    'jdserato@gmail.com',
+    '',
     [1],
-    'password',
+    '',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Abdelrahman_ElGendy%E2%80%94Headshot.jpg/640px-Abdelrahman_ElGendy%E2%80%94Headshot.jpg',
     'Poblacion, Liloan, Cebu'
   ),

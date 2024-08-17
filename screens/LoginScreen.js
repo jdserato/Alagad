@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../components/Input";
 import { useRef, useState } from "react";
 import BlackButton from "../components/BlackButton";
@@ -32,8 +32,8 @@ function LoginScreen( {route, navigation} ) {
       dispatch(logInUser({id: user.id}));
       navigation.navigate("CustomerMainScreen");
     } else {
-      console.log("Invalid username/password");
-      
+      Alert.alert("Invalid username/password", 
+        "Could not log you in. Please check your credentials or try again later.");
     }
   }
 
@@ -52,6 +52,7 @@ function LoginScreen( {route, navigation} ) {
         onChangeText: inputChangedHandler.bind(this, 'password')
       }}/>
     </ScrollView>
+    
     <View style={styles.buttonsContainer}>
     <BlackButton onClick={loginHandler}>LOG IN</BlackButton>
     </View>
@@ -71,5 +72,10 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flex: .1,
     marginHorizontal: 16
+  },
+  invalidText: {
+    color: 'red',
+    textAlign: 'center',
+    justifyContent: 'center',
   }
 });

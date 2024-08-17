@@ -9,6 +9,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import WorkerDetailScreen from './WorkerDetailScreen';
 import BookingScreen from './BookingScreen';
 import LandingScreen from './LandingScreen';
+import BookingsScreenLayout from '../Bookings/BookingsScreenLayout';
 
 const Drawer = createDrawerNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -54,6 +55,12 @@ function BottomTabsNav() {
         headerShown: false,
         tabBarIcon: ({color, size}) => (
           <Ionicons name="home" color={color} size={size}/>
+        )
+      })}/>
+      <BottomTabs.Screen name='My Booking' component={BookingsScreenLayout} options={({route}) => ({
+        title: "My Bookings",
+        tabBarIcon: ({color, size}) => (
+          <Ionicons name="bookmarks-sharp" color={color} size={size}/>
         )
       })}/>
       <BottomTabs.Screen name='Chats' component={ChatsScreen} options={{

@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   rootContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonsContainer: {
     width: '80%',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   reviewsContainer: {
     width: '90%',
-    marginBottom: 1200
+    marginBottom: 500
     // flex: 1
   },
   listContainer: {
