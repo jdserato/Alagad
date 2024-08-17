@@ -12,6 +12,8 @@ import ChoiceScreen from './screens/ChoiceScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/Customer/MainScreen';
+import CustomerMainScreen from './screens/Customer/CustomerMainScreen';
+import WorkerMainScreen from './screens/Worker/WorkerMainScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import LandingScreen from './screens/Customer/LandingScreen';
 import SpecificServicersScreen from './screens/Customer/SpecificServicersScreen';
@@ -83,6 +85,10 @@ export default function App() {
           <Stack.Screen name='SpecificServicersScreen' component={SpecificServicersScreen}/>
           <Stack.Screen name='WorkerDetailScreen' component={WorkerDetailScreen}/>
           <Stack.Screen name='BookingScreen' component={BookingScreen}/>
+          <Stack.Screen name="WorkerMainScreen" component={WorkerMainScreen} options={{
+            title: "Welcome",
+            headerShown: false
+          }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
