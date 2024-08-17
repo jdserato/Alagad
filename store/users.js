@@ -1,3 +1,4 @@
+import { createSlice } from "@reduxjs/toolkit";
 import User from "../models/user";
 
 export const USERS = [
@@ -62,3 +63,22 @@ export const USERS = [
     'Tisa, Cebu City'
   ),
 ]
+
+const loggedInUserSlice = createSlice( {
+  name: 'user',
+  initialState: {
+    id: null,
+  },
+  reducers: {
+    logIn: (state, action) => {
+      state.id = action.payload.id;
+    },
+    logOut: (state, action) => {
+      state.id = null;
+    }
+  }
+});
+
+export const logInUser = loggedInUserSlice.actions.logIn;
+export const logOutUser = loggedInUserSlice.actions.logOut;
+export default loggedInUserSlice.reducer;
