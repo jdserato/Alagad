@@ -2,7 +2,12 @@ import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native
 import { BOOKINGS } from "../store/bookings";
 import JobOrderItem from "./JobOrderItem";
 
-function JobOrderList() {
+function JobOrderList({context}) {
+  const bookingsList = BOOKINGS.filter((booking) => {
+    if (context === 'Previous') {
+      return booking.status >= 2; // cancelled or completed
+    }
+  })
   function renderJobOrder(itemData) {
     return (
       // <Text></Text>

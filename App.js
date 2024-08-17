@@ -12,7 +12,6 @@ import ChoiceScreen from './screens/ChoiceScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/Customer/MainScreen';
-import CustomerMainScreen from './screens/Customer/CustomerMainScreen';
 import WorkerMainScreen from './screens/Worker/WorkerMainScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import LandingScreen from './screens/Customer/LandingScreen';
