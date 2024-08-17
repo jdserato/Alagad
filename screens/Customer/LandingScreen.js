@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import AllServicesList from "../../components/AllServicesList";
+import { useSelector } from "react-redux";
+import { USERS } from "../../store/users";
 
-function CustomerLanding() {
+function LandingScreen() {
+  const userId = useSelector((state) => state.loggedInUser.id);
+  const activeUser = USERS.find((user) => {
+    return user.id === userId;
+  });
+  
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
+      <Text style={styles.text}>Welcome {activeUser.first_name}</Text>
       <Text style={styles.text}>What are you looking for today?</Text>
       </View>
       <AllServicesList />
@@ -12,7 +20,7 @@ function CustomerLanding() {
   );
 }
 
-export default CustomerLanding;
+export default LandingScreen;
 
 const styles = StyleSheet.create({
   container: {

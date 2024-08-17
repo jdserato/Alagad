@@ -11,9 +11,36 @@ export const REVIEWS = [
     '2024-08-11'
   ),
   new Review(
-    'r1',
-    '001',
+    'r5',
     '004',
+    '002',
+    'b002',
+    3,
+    "HE is a late arrival of a person",
+    '2024-08-11'
+  ),
+  new Review(
+    'r2',
+    '004',
+    '002',
+    'b002',
+    3,
+    "HE is a late arrival of a person",
+    '2024-08-11'
+  ),
+  new Review(
+    'r3',
+    '004',
+    '002',
+    'b002',
+    3,
+    "HE is a late arrival of a person",
+    '2024-08-11'
+  ),
+  new Review(
+    'r4',
+    '004',
+    '002',
     'b002',
     3,
     "HE is a late arrival of a person",
