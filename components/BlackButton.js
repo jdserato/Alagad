@@ -1,14 +1,22 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/styles";
 
-function BlackButton({ children, onClick }) {
+function BlackButton({ children, onClick, bgColor }) {
     function pressHandler() {
         onClick();
     }
-
+    if (bgColor) {
+    return (
+        <View style={[styles.btnOuterContainer, {borderColor: bgColor}]}>
+            <Pressable style={({pressed}) => pressed ? [styles.pressed, styles.btnInnerContainer, {backgroundColor: bgColor, }] : [styles.btnInnerContainer, {backgroundColor: bgColor}] } onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
+                    <Text style={styles.buttonText}>{children}</Text>
+            </Pressable>
+        </View>
+    );
+    } 
     return (
         <View style={styles.btnOuterContainer}>
-            <Pressable style={({pressed}) => pressed ? [styles.pressed, styles.btnInnerContainer] :styles.btnInnerContainer } onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
+            <Pressable style={({pressed}) => pressed ? [styles.pressed, styles.btnInnerContainer] : [styles.btnInnerContainer] } onPress={onClick} android_ripple={{ color: Colors.accent200 }}>
                     <Text style={styles.buttonText}>{children}</Text>
             </Pressable>
         </View>

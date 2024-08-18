@@ -5,7 +5,7 @@ import { USERS } from "../store/users";
 import { WORKERS } from "../store/serviceworkers";
 import { useNavigation } from "@react-navigation/native";
 
-function JobOrderItem({booking}) {
+function JobOrderItem({booking, nextScreen, context}) {
   const navigation = useNavigation();
   const worker = WORKERS.find((worker) => {
     return worker.id === booking.workerId; //to change to workerId -> user -> userId
@@ -18,7 +18,8 @@ function JobOrderItem({booking}) {
   console.log(booking);
   
   function bookingHandler() {
-    navigation.navigate("JobDetailsScreen", {booking: booking, worker:worker, user:user });
+    console.log(nextScreen);
+    navigation.navigate(nextScreen, {booking: booking, worker: worker, user: user, context: context});
   }
 
   return (

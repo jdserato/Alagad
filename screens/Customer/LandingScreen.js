@@ -3,12 +3,16 @@ import AllServicesList from "../../components/AllServicesList";
 import { useSelector } from "react-redux";
 import { USERS } from "../../store/users";
 
-function LandingScreen() {
+function LandingScreen({navigation}) {
   const userId = useSelector((state) => state.loggedInUser.id);
   const activeUser = USERS.find((user) => {
     return user.id === userId;
   });
+  console.log(activeUser,'is null?', !activeUser);
   
+  if (!activeUser) {
+    navigation.replace("HomeScreen");
+  }
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>

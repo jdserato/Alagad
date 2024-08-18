@@ -20,6 +20,7 @@ import WorkerDetailScreen from './screens/Customer/WorkerDetailScreen';
 import BookingScreen from './screens/Customer/BookingScreen';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import BookingCustomerDetailsScreen from './screens/Bookings/BookingCustomerDetails';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -88,6 +89,7 @@ export default function App() {
             title: "Welcome",
             headerShown: false
           }}/>
+          <Stack.Screen name='CustomerBookingDetails' component={BookingCustomerDetailsScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

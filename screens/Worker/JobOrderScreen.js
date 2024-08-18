@@ -2,12 +2,15 @@ import { StyleSheet, Text, View } from "react-native";
 import JobOrderList from "../../components/JobOrderList";
 
 function JobOrderScreen( {route, navigation} ) {
+  
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
       <Text style={styles.text}>Pending Job</Text>
       </View>
-      <JobOrderList />
+      <JobOrderList nextScreen={"JobDetailsScreen"}/>
     </View>
   );
 }

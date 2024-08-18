@@ -1,18 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import JobOrderList from "../../components/JobOrderList";
 
-function BookingsCurrent() {
+function BookingsPending() {
   return (
   <View style={styles.container}>
     <View style={styles.textContainer}>
-    <Text style={styles.text}>Your Current Bookings</Text>
+    <Text style={styles.text}>Your Pending Bookings</Text>
     </View>
-    <JobOrderList context={"Current"} nextScreen={"CustomerBookingDetails"}/>
+    <JobOrderList context={"Pending"} nextScreen={"CustomerBookingDetails"}/>
   </View>
   );
 }
 
-export default BookingsCurrent;
+export default BookingsPending;
 
 const styles = StyleSheet.create({
   container: {
