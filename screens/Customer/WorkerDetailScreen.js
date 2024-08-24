@@ -21,6 +21,12 @@ function WorkerDetailScreen( {route, navigation} ) {
   function bookNowHandler() {
     navigation.navigate("BookingScreen", {worker: worker});
   }
+  function messageHandler() {
+    navigation.navigate("Messages", { user: {
+      userName: `${user.first_name} ${user.last_name}`,
+      userImg: user.image
+    }})
+  }
   return (
     <View style={styles.rootContainer}>
       <Image source={{ uri: user.image }} style={styles.image} />
@@ -31,7 +37,7 @@ function WorkerDetailScreen( {route, navigation} ) {
           <BlackButton onClick={bookNowHandler}>BOOK NOW</BlackButton>
         </View>
         <View style={styles.buttonContainer}>
-          <WhiteButton>MESSAGE</WhiteButton>
+          <WhiteButton onClick={messageHandler}>MESSAGE</WhiteButton>
         </View>
       </View>
       <View style={styles.reviewsContainer}>

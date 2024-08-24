@@ -21,7 +21,7 @@ import BookingScreen from './screens/Customer/BookingScreen';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import BookingCustomerDetailsScreen from './screens/Bookings/BookingCustomerDetails';
-
+import MessageScreen from './screens/MessageScreen';
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -90,6 +90,8 @@ export default function App() {
             headerShown: false
           }}/>
           <Stack.Screen name='CustomerBookingDetails' component={BookingCustomerDetailsScreen}/>
+          <Stack.Screen name='Messages' component={MessageScreen} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
