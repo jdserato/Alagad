@@ -4,10 +4,15 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import BlackButton from '../../components/BlackButton';
 import { USERS } from "../../store/users";
 import { useForm, Controller } from 'react-hook-form';
+import { storeBooking } from '../../util/http';
+import { useSelector } from 'react-redux';
 
-export default function BookingScreen({ route }) {
+export default function BookingScreen({ route, navigation }) {
   const worker = route.params.worker;
-  const user = USERS.find(userItem => worker.userId === userItem.id);
+
+  const userId = useSelector((state) => state.loggedInUser.id);
+  const activeUser = USERS.find((user) => user.id === userId);
+  
   const today = new Date();
 
   const { control, handleSubmit, setValue, getValues, formState: { errors } } = useForm({
@@ -38,14 +43,18 @@ export default function BookingScreen({ route }) {
   const onSubmit = data => {
 
     const formData = {
-      userId: user.id,
+      workerId: worker.id,
+      clientId: activeUser.id,
       address: data.address,
       landmarks: data.landmarks,
       details: data.details,
       date: data.date.toDateString(),
       time: data.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }),
+      status: 0
     };
     console.log('Submitted Booking:', formData);
+    storeBooking(formData);
+    navigation.navigate("Pending");
     // TODO: handle submission logic / api integration
   };
 

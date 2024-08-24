@@ -10,12 +10,14 @@ function JobOrderItem({booking, nextScreen, context}) {
   const worker = WORKERS.find((worker) => {
     return worker.id === booking.workerId; //to change to workerId -> user -> userId
   })
+  console.log(worker + " is worker from " + booking.workerId);
+  
   const user = USERS.find((user) => {
     return user.id === worker.userId; //to change to workerId -> user -> userId
   })
 
-  console.log(user);
-  console.log(booking);
+  console.log(user + " is user");
+  console.log(booking + " is booking");
   
   function bookingHandler() {
     console.log(nextScreen);
