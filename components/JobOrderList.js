@@ -1,28 +1,28 @@
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { BOOKINGS } from "../store/bookings";
+import { BOOKINGS, BookingsContext, getBookings, setBookings } from "../store/bookings";
 import JobOrderItem from "./JobOrderItem";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchBookings } from "../util/http";
 import { useSelector } from "react-redux";
 import { USERS } from "../store/users";
 
 function JobOrderList({context, nextScreen}) {
-  const [fetchedBookings, setFetchedBookings] = useState([]);
-
+  // const [fetchedBookings, setFetchedBookings] = useState([]);
+  const bookingsCtx = useContext(BookingsContext);
   const userId = useSelector((state) => state.loggedInUser.id);
   const activeUser = USERS.find((user) => user.id === userId);
 
   useEffect(() => {
     async function getBookings() {
       const bookings = await fetchBookings();
-      setFetchedBookings(bookings);
+      // setFetchedBookings(bookings);
+      bookingsCtx.setBookings(bookings);
     }
 
     getBookings();
   }, []);
-
-  console.log("All fetched", fetchedBookings);
-  const bookingsList = fetchedBookings.filter((booking) => {
+  
+  const bookingsList = bookingsCtx.bookings.filter((booking) => {
     if (activeUser.id != booking.clientId) {
       return false;
     }

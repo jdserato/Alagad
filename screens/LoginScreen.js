@@ -2,7 +2,6 @@ import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../components/Input";
 import { useRef, useState } from "react";
 import BlackButton from "../components/BlackButton";
-import { useNavigation } from "@react-navigation/native";
 import { logInUser, USERS } from "../store/users";
 import { useDispatch } from "react-redux";
 

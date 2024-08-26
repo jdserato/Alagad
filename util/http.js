@@ -2,10 +2,18 @@ import axios from "axios";
 
 const BACKEND_URL = 'https://alagad-42746-default-rtdb.asia-southeast1.firebasedatabase.app'
 
-export function storeBooking(bookingData) {
-  axios.post(BACKEND_URL + '/booking.json',
-    bookingData
-  );
+export async function storeBooking(bookingData) {
+  const response = await axios.post(BACKEND_URL + '/booking.json', bookingData);
+  const id = response.data.name;
+  return id;
+}
+
+export function updateBooking(id, bookingData) {
+  return axios.put(BACKEND_URL + '/booking/' + id + '.json', bookingData);
+}
+
+export function deleteBooking() {
+  return axios.delete(BACKEND_URL + '/booking/' + id + '.json');
 }
 
 export async function fetchBookings() {

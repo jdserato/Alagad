@@ -1,12 +1,13 @@
-import { useDispatch } from "react-redux";
 import BlackButton from "../../components/BlackButton";
 import JobDetailsGeneric from "../Worker/JobDetailsGeneric";
 import JobDetailsScreen from "../Worker/JobDetailsScreen";
 import { Alert, Button, StyleSheet, View } from "react-native";
-import { changeBookingStatus } from "../../store/bookings";
+import { BookingsContext, changeBookingStatus } from "../../store/bookings";
+import { useContext } from "react";
+import { updateBooking } from "../../util/http";
 
-function BookingCustomerDetailsScreen( {route} ) {
-  const dispatch = useDispatch();
+function BookingCustomerDetailsScreen( {route, navigation } ) {
+  const BookingsCtx = useContext(BookingsContext);
   const booking = route.params.booking;
   console.log(booking.status);
   
@@ -16,7 +17,9 @@ function BookingCustomerDetailsScreen( {route} ) {
         text: "CONFIRM",
         style: 'default',
         onPress: () => {
-          dispatch(changeBookingStatus({id: booking.id, newstatus: 4}));
+          BookingsCtx.updateBooking(booking.id, {status: 4});
+          updateBooking(booking.id, {...booking, status: 4});
+          navigation.navigate("My Booking", {screen: 'Previous'});
         }
       },
       {

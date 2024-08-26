@@ -5,7 +5,7 @@ import bookingReducer from './bookings';
 export const store = configureStore({
   reducer: {
     loggedInUser: userReducer,
-    bookingRedcr: bookingReducer,
+    // bookingRedcr: bookingReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

@@ -1,4 +1,3 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button, ImageBackground, SafeAreaView } from 'react-native';
@@ -18,10 +17,11 @@ import LandingScreen from './screens/Customer/LandingScreen';
 import SpecificServicersScreen from './screens/Customer/SpecificServicersScreen';
 import WorkerDetailScreen from './screens/Customer/WorkerDetailScreen';
 import BookingScreen from './screens/Customer/BookingScreen';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
 import BookingCustomerDetailsScreen from './screens/Bookings/BookingCustomerDetails';
 import MessageScreen from './screens/MessageScreen';
+import BookingContextProvider from './store/bookings';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -59,7 +59,8 @@ export default function App() {
   return (
     <>
     <StatusBar style='auto'/>
-    <Provider store={store}>
+      <Provider store={store}>
+    <BookingContextProvider>
     <SafeAreaView style={styles.rootScreen} onLayout={onLayoutRootView}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -95,6 +96,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
+    </BookingContextProvider>
     </Provider>
     </>
   );

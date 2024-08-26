@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet, Platform, ScrollView } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BlackButton from '../../components/BlackButton';
@@ -6,10 +6,11 @@ import { USERS } from "../../store/users";
 import { useForm, Controller } from 'react-hook-form';
 import { storeBooking } from '../../util/http';
 import { useSelector } from 'react-redux';
+import { BookingsContext } from '../../store/bookings';
 
 export default function BookingScreen({ route, navigation }) {
   const worker = route.params.worker;
-
+  const BookingsCtx = useContext(BookingsContext)
   const userId = useSelector((state) => state.loggedInUser.id);
   const activeUser = USERS.find((user) => user.id === userId);
   
@@ -40,7 +41,7 @@ export default function BookingScreen({ route, navigation }) {
     setValue('time', currentTime);
   };
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
 
     const formData = {
       workerId: worker.id,
@@ -53,8 +54,9 @@ export default function BookingScreen({ route, navigation }) {
       status: 0
     };
     console.log('Submitted Booking:', formData);
-    storeBooking(formData);
-    navigation.navigate("Pending");
+    const id = await storeBooking(formData);
+    BookingsCtx.addBooking({...formData, id: id});
+    navigation.navigate("My Booking", {screen: 'Pending'});
     // TODO: handle submission logic / api integration
   };
 
